@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+	<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			<section data-markdown>
+			<script type="text/template">
+## Continuous Delivery ##
+What is it?
+			</script>
+			</section>
+			
+			<section data-markdown>
+			<script type="text/template">
+## Continuous Delivery Defined ##
+* Recovery over Perfection
+* Predictability over Commitment
+* Safety Nets over Change Control
+* Collaboration over Handoffs
+			</script>
+			</section>
+			
+			<section data-markdown>
+			<script type="text/template">
+## Really, what is this? ##
+* Versioned services - New service deploy can mean a new service version.
+* Small releases means there's an easier time determining culprits. Rollbacks are easier because only one change is reverted, not 5 bugfixes and 4 features unreleated to the break.
+* Deployments are exchanged via a load balancer. At the moment of trouble, flip back to the older version.
+* Softer dependency chains means uptime even when a dependency breaks.
+* Customers can get turnaround potentially in hours instead of months.
+			</script>
+			</section>
+			
+			<section data-markdown>
+			<script type="text/template">
+## Nice on paper, but how does this play out in reality? ##
+* Flickr as of 2009 was making an average of 10 production deploys a day.
+    * After the Yahoo acquision, metrics were compared and uptime was found to be higher than Yahoo's pre-existing apps.
+* Netflex is so confident about their continuous delivery system, that they have created Chaos Monkey - a bot that brings down parts of their infrastructure during work hours.
+* Google, Etsy, LinkedIn, I stopped looking around at this point.
+			</script>
+			</section>
+			
+			<section data-markdown>
+			<script type="text/template">
+## Cool story bro, what are we doing to get there? ##
+1. Get continuous integration going company-wide. <--- we are here
+2. Get our 'POJOs' behind a high availability load balancer.
+3. Bring in Classic and AMX to a clustered setup.
+            </script>
+			</section>
+			
+			<section data-markdown>
+			<script type="text/template">
+## What can I do? ##
+1. Get a unit and integration test suite running for your project to help prevent errors from getting out to production.
+2. Dramaticaly improve our logging and metrics gathering so we know when something breaks.
+3. Introduce feature toggles to help avoid large release branches or commenting out large portions of code when a revert is needed.
+            </script>
+			</section>
+		</div>
+
+	</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
